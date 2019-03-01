@@ -1,0 +1,44 @@
+div.header-wrapper {
+    padding: 12px;
+    display: flex;
+    align-items: center; // 元素位于容器中心
+    flex-wrap: nowrap; // 每个块/行元素不拆行或不拆列
+    overflow: hidden;
+    line-height: 0;
+
+    img {
+        margin-left: 8px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .username-text {
+        margin-left: 8px;
+        flex: 1;
+        line-height: 40px;
+        font-size: 14px;
+        color: #fff;
+    }
+
+    .header-btn {
+        color: #fff;
+
+        i {
+            font-size: 18px;
+        }
+    }
+}
+
+.list-wrapper {
+    overflow-y: scroll;
+    position: absolute;
+    top: 60px;
+    bottom: 48px;
+    width: 100%;
+    padding-bottom: 20px;
+
+    .add-list-btn-wrapper {
+        margin-top: 8px;
+        text-align: center;
+    }
+}

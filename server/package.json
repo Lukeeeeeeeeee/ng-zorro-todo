@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "express jwt",
+  "main": "index.js",
+  "scripts": {
+    "devstart": "nodemon ./index.js"
+  },
+  "author": "fourteen",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "crypto": "^1.0.1",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.15",
+    "morgan": "^1.9.1"
+  }
+}
