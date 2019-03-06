@@ -1,19 +1,20 @@
 <div class="header-wrapper">
-    <img src="./assets/img/default-avatar.png" alt="">
+    <img src="./assets/img/default-avatar.png" alt="" />
     <span class="username-text" *ngIf="!isCollapsed">
-        {{username}}
+        {{ username }}
     </span>
-    <div class="floating-btn header-btn" *ngIf="!isCollapsed">
-        <i class="anticon anticon-setting"></i>
+    <div class="floating-btn header-btn" *ngIf="!isCollapsed" (click)="goSetting()">
+        <i nz-icon nzType="setting"></i>
     </div>
-    <div class="floating-btn header-btn" *ngIf="!isCollapsed">
-        <i class="anticon anticon-calendar"></i>
+    <div class="floating-btn header-btn" *ngIf="!isCollapsed" (click)="goSummary()">
+        <i nz-icon nzType="calendar"></i>
     </div>
 </div>
 <div class="list-wrapper">
+    <app-list [isCollapsed]="isCollapsed"></app-list>
     <div class="add-list-btn-wrapper">
-        <button nz-button nzGhost nzType="dashed">
-            <i class="anticon anticon-plus"></i>
+        <button nz-button nzGhost nzType="dashed" (click)="openAddListModal()">
+            <i nz-icon type="plus"></i>
             <span *ngIf="!isCollapsed">新列表</span>
         </button>
     </div>

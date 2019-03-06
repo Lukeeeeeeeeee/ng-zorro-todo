@@ -1,0 +1,101 @@
+<ul
+    nz-menu
+    [nzTheme]="'dark'"
+    [nzMode]="'inline'"
+    [nzInlineCollapsed]="isCollapsed"
+>
+    <li
+        nz-menu-item
+        [nzSelected]="currentListUuid === 'today'"
+        (click)="click('today')"
+    >
+        <span>
+            <i nz-icon nzType="home"></i>
+            <span class="nav-text">Today</span>
+        </span>
+    </li>
+    <li
+        nz-menu-item
+        (click)="click('todo')"
+        [nzSelected]="currentListUuid === 'todo'"
+    >
+        <i nz-icon nzType="calendar"></i>
+        <span class="nav-text">TODO</span>
+    </li>
+    <li
+        nz-menu-item
+        *ngFor="let list of lists"
+        [nzSelected]="currentLisUuid === list._id"
+        (click)="click(list._id)"
+        (contextmenu)="contextMenu($event, contextTemplate, list._id)"
+    >
+        <i nz-icon nzType="bars"></i>
+        <span class="nav-text">{{ list.title }}</span>
+    </li>
+</ul>
+
+<ng-template #contextTemplate>
+    <ul nz-menu nzInDropDown nzSelectable (nzClick)="close()">
+        <li nz-menu-item (click)="openRenameListModal()">
+            <i nz-icon type="edit" class="anticon-right-margin"></i>
+            <span>重命名</span>
+        </li>
+        <li nz-menu-divider></li>
+        <li nz-menu-item (click)="delete()">
+            <i nz-icon type="delete" class="anticon-right-margin danger"></i>
+            <span class="danger">删除列表</span>
+        </li>
+    </ul>
+</ng-template>
+
+<nz-modal
+    [(nzVisible)]="addListModalVisible"
+    [nzTitle]="'添加新列表'"
+    [nzClosable]="true"
+    [nzWidth]="420"
+    [nzOkText]="'添加'"
+    [nzCancelText]="'取消'"
+    [nzMaskClosable]="true"
+    (nzOnCancel)="closeAddListModal()"
+    (nzOnOk)="add(listInput.value); listInput.value = ''"
+>
+    <form nz-form>
+        <nz-form-item>
+            <nz-form-control>
+                <input
+                    nz-input
+                    #listInput
+                    name="listTitle"
+                    placeholder="列表名称"
+                    (keydown.enter)="add(listInput.value); listInput.value = ''"
+                />
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-modal>
+
+<nz-modal
+    [(nzVisible)]="renameListModalVisible"
+    [nzTitle]="'重命名列表'"
+    [nzClosable]="true"
+    [nzWidth]="420"
+    [nzOkText]="'重命名'"
+    [nzCancelText]="'取消'"
+    [nzMaskClosable]="true"
+    (nzOnCancel)="closeRenameListModal()"
+    (nzOnOk)="rename(listRenameInput.value); listRenameInput.value = ''"
+>
+    <form nz-form>
+        <nz-form-item>
+            <nz-form-control>
+                <input
+                    nz-input
+                    #listRenameInput
+                    name="renameListTitle"
+                    placeholder="列表名称"
+                    (keydown.enter)="rename(listRenameInput.value); listRenameInput.value = ''"
+                />
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-modal>

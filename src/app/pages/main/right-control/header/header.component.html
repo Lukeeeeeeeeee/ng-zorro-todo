@@ -1,0 +1,42 @@
+<div class="header-container">
+    <img src="./assets/img/logo.png" alt="" class="background-img" />
+    <div class="list-title-wrapper">
+        {{ listTitle }}
+    </div>
+    <div class="suggest-btn-wrapper">
+        <nz-dropdown
+            [nzTrigger]="'click'"
+            [nzClickHide]="false"
+            [nzPlacement]="'bottomRight'"
+        >
+            <button nz-dropdown nz-button [nzType]="'primary'">
+                <i nz-icon type="bulb"></i>建议
+            </button>
+            <div class="dropdown-content-wrapper" nz-menu>
+                <app-suggest></app-suggest>
+            </div>
+        </nz-dropdown>
+    </div>
+    <div class="sort-btn-wrapper">
+        <nz-dropdown [nzPlacement]="'bottomRight'">
+            <a nz-dropdown>
+                排序
+                <i nz-icon type="down"></i>
+            </a>
+            <ul nz-menu nzSelectable>
+                <li nz-menu-item (click)="switchRankType('title')">
+                    名称
+                </li>
+                <li nz-menu-item (click)="switchRankType('planAt')">
+                    计划时间
+                </li>
+                <li nz-menu-item (click)="switchRankType('dueAt')">
+                    截至时间
+                </li>
+                <li nz-menu-item (click)="switchRankType('completeFlag')">
+                    完成状态
+                </li>
+            </ul>
+        </nz-dropdown>
+    </div>
+</div>

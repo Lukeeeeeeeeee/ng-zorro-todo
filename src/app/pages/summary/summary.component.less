@@ -1,0 +1,45 @@
+.profile-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column; // 内部元素垂直显示，如一列排布
+    align-items: center; // 元素居中
+    justify-content: center; // 位于容器中心
+    color: #fff;
+    
+    .avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .username {
+        margin: 10px auto;
+        font-size: 22px;
+    }
+
+    .date-count {
+        font-size: 14px;
+    }
+}
+
+.todo-list {
+    list-style: none;
+    overflow: scroll;
+    padding: 0;
+    height: 80%;
+
+    div {
+        height: calc(100% - 20px);
+    }
+}
+
+.back-btn {
+    position: absolute;
+    left: 16px;
+    top: 20px;
+    padding: 12px;
+    color: #fff;
+}
